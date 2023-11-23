@@ -1,6 +1,7 @@
 import prisma from '@/lib/prisma';
 import { Post } from './components/Post';
 import Link from 'next/link';
+import { AddForm } from './components/AddForm/AddForm';
 
 async function getPosts() {
   const posts = await prisma.post.findMany({
@@ -20,6 +21,7 @@ export default async function Home() {
   return (
     <main className='p-20'>
       <Link href={'/add-post'}>Add Post</Link>
+      <AddForm />
       <h1>Posts</h1>
       {posts.map((post) => {
         return (
